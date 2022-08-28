@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+    backend:
+        container_name: backend
+        image: hieudv1408/ivs-backend:1.0.0
+        ports:
+            - "3000:3000"
+        networks:
+            - common
+        restart: always    
+        environment:
+          MONGODB_HOST: mongo:27017
+          JWT_EXPIRED_SECONDS: 3600
+    mongo:
+        container_name: ivs-mongo
+        image: mongo:latest
+        volumes:
+            - ./data/mongo:/data/db
+        ports:
+            - "27017:27017"
+        networks:
+            - common
+        restart: always   
+networks:
+    common:

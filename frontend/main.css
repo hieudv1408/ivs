@@ -1,0 +1,162 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper {
+  height: 100vh;
+  background: linear-gradient(147deg, rgb(255, 255, 255) 50%, rgb(255, 255, 255) 57%, rgb(245, 222, 204) 50%);
+}
+
+.inner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+}
+
+.registration-form {
+  width: 300px;
+  box-shadow: rgb(28 47 58 / 20%) -2px 3px 13px 0px;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 23px 17px 35px;
+}
+
+.header {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.animation-wrapper {
+  position: relative;
+  height: 70px;
+}
+
+.animation {
+  position: absolute;
+  -webkit-animation: linear infinite;
+  -webkit-animation-name: run;
+  -webkit-animation-duration: 5s;
+}
+
+.animation img {
+  width: 50px;
+}
+
+@-webkit-keyframes run {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: calc(100% - 50px);
+  }
+  100% {
+    left: 0;    
+  }
+}
+
+.form-title {
+  font-size: 18px;
+  text-align: center;
+}
+
+.line {
+  border: 1px solid rgb(211, 221, 225);
+}
+
+.field-container {
+  display: flex;
+  /* align-items: center; */
+  margin-bottom: 8px;
+  height: 50px;
+}
+
+.label-container {
+  margin-bottom: 7px;
+  width: 100px;
+  margin-top: 5px;
+}
+
+.field-label {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.field-input-container {
+  flex: 1;
+}
+
+.field-input {
+  padding: 7px 12px;
+  border: 1px solid rgb(211, 221, 225);
+  border-radius: 4px;
+  font-size: 12px;
+  transition: background-color 300ms ease-in-out 0s, color 300ms ease-in-out 0s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.field-input::placeholder {
+  color: #cccccc;
+}
+
+.red-color {
+  color: red;
+}
+
+.error-message {
+  font-size: 12px;
+  display: inline;
+}
+
+.error-message.error-with-label {
+  display: none;
+}
+
+.register-btn {
+  background-color: rgb(247, 248, 248);
+  font-size: 14px;
+  display: block;
+  height: 30px;
+  width: 100%;
+  border: 1px solid rgb(211, 221, 225);
+  font-weight: 500;
+  border-radius: 4px;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.register-btn.active {
+  cursor: pointer;
+  background-color: #0066fb;
+  color: #fff;
+}
+
+@media only screen and (max-width: 375px) {
+  .content {
+    margin-bottom: 20px;
+  }
+
+  .field-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .label-container {
+    width: 100%;
+  }
+
+  .error-message {
+    display: none;
+  }
+
+  .error-message.error-with-label {
+    display: inline;
+  }
+}

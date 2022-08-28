@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="inner">
+      <div class="registration-form">
+        <div class="registraion-form__inner">
+          <div class="header">
+            <div class="animation-wrapper">
+              <div class="animation">
+                <img src="assets/images/registration-form-icon.jpeg"/>
+              </div>
+            </div>
+            <div class="form-title">
+              Signup form
+            </div>
+          </div>
+          <div class="content">
+            <div class="field-container">
+              <div class="label-container">
+                <label class="field-label">
+                  Name<span class="red-color">*</span>
+                </label>
+                <span class="error-message red-color name-error-message error-with-label"></span>
+              </div>
+              <div class="field-input-container">
+                <input class="field-input" type="text" placeholder="Hieu Dinh Van" onkeyup="onChange('name')" name="name"/>
+                <div>
+                  <span class="error-message red-color name-error-message"></span>
+                </div>
+              </div>
+            </div>
+            <div class="field-container">
+              <div class="label-container">
+                <label class="field-label">
+                  Email address<span class="red-color">*</span>
+                </label>
+                <span class="error-message red-color email-error-message error-with-label"></span>
+                <div>
+                </div>
+              </div>
+              <div class="field-input-container">
+                <input class="field-input" placeholder="hieudv1408@gmail.com"  onkeyup="onChange('email')" name="email"/>
+                <div>
+                  <span class="error-message red-color email-error-message"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer">
+            <button class="register-btn" onclick="onRegister()">Register</button>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+</body>
+<script src='./main.js'></script>
+<script>
+  console.log(2)
+</script>
+</html>
