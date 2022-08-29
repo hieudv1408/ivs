@@ -21,3 +21,9 @@ export function UsernameOrPasswordWrongError () {
   this.message = `Username or Password is incorrect`;
   this.status = 400;
 }
+
+export function AdminExistedError () {
+  this.name = 'AdminExistedError';
+  this.message = `Admin account existed`;
+  this.status = 400;
+}

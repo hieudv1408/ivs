@@ -1,11 +1,12 @@
 import UserModel from '#src/models/user.js';
 import bcrypt from '#src/utils/bcrypt.js';
 import jwt from '#src/utils/jwt.js';
+import { UsernameOrPasswordWrongError, AdminExistedError } from '#src/exceptions/index.js';
 
 const setup = async (password) => {
   const isAdminExisting = await UserModel.findOne({ username: 'admin' });
   if (isAdminExisting) {
-    throw 'Admin was created already!';
+    throw new AdminExistedError();
   }
   const admin = {
     username: 'admin',
@@ -23,7 +24,7 @@ const login = async (username, password) => {
     wrongInformation = !(await bcrypt.comparePassword(password, user.password));
   }
   if (wrongInformation) {
-    throw 'Wrong information';
+    throw new UsernameOrPasswordWrongError();
   }
   return {
     token: jwt.encode({username})

@@ -22,12 +22,10 @@ const options = {
 };
 
 export default async () => {
-  // logger.info('Starting connect to MongoDB...');
   await connect(mongodbUrl, options);
   connection.on('error', () => {
     logger.error('MongoDB connection error');
     process.exit(1);
   });
-  // console
   logger.info('Successfully connected to MongoDB');
 };

@@ -89,10 +89,10 @@ function onChange(name) {
 }
 
 function resetForm () {
-  let selectors = Object.keys(SELECTORS);
+  let selectors = [SELECTORS.NAME, SELECTORS.EMAIL]
   for (let i=0; i<selectors.length; i++) {
     const element = document.querySelector(selectors[i]);
-    if (element) element.innerHTML = "";
+    if (element) element.value = "";
   }
   nameError = "";
   isFormValid = false;
@@ -100,23 +100,33 @@ function resetForm () {
 }
 
 function validateEmail(email) {
-  return !!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
+  return !!email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
 }
 
 async function onRegister () {
   if (!isFormValid) return;
   const name = getValue(`input[name="name"]`);
   const email = getValue(`input[name="email"]`);
-  const result = await fetch('https://ivs-backend.hieudinhvan.com/api/signups', {
+  fetch('https://ivs-backend.hieudinhvan.com/api/signups', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({name, email})
-  });
-  if (result.ok) {
-    alert('Register successfully!');
-    resetForm();
-  }
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data?.data?.name) {
+        alert('Register successfully!');
+        resetForm();
+        return;
+      }
+      if (data?.errors) {
+        let errors = data?.errors?.map(error => error?.msg).join(",")
+        if (errors) {
+          alert (errors);
+        }
+      }
+    })
 }
