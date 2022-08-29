@@ -107,7 +107,7 @@ async function onRegister () {
   if (!isFormValid) return;
   const name = getValue(`input[name="name"]`);
   const email = getValue(`input[name="email"]`);
-  const result = await fetch('http://localhost:3000/api/signups', {
+  const result = await fetch('https://ivs-backend.hieudinhvan.com/api/signups', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
